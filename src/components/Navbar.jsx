@@ -1,5 +1,5 @@
 import * as api from "../utils/api";
-import TopicFilter from "../components/TopicButton";
+import TopicButton from "../components/TopicButton";
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
 		<nav className="Navbar">
 			<div className="filter">
 				{topic.map(({ slug }) => {
-					return <TopicFilter key={slug} topic={slug} />;
+					return <TopicButton key={slug} topic={slug} />;
 				})}
 			</div>
 		</nav>

@@ -7,7 +7,6 @@ const ArticleList = () => {
 	const [articles, setArticles] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const { topic } = useParams();
-
 	useEffect(() => {
 		if (!topic) {
 			api.fetchAllArticles().then((data) => {
@@ -38,15 +37,16 @@ const ArticleList = () => {
 						comment_count,
 					}) => {
 						return (
-							<div className="articleCard">
+							<div className="articleCard" key={`Article: ${article_id}`}>
 								<ArticleCard
-									key={`${article_id}`}
+									key={article_id}
 									title={title}
 									author={author}
 									topic={topic}
 									created_at={created_at}
 									votes={votes}
 									comment_count={comment_count}
+									article_id={article_id}
 								/>
 							</div>
 						);
