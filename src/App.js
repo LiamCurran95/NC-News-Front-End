@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./routes/Home";
+import SingleArticle from "./routes/SingleArticle";
 
 function App() {
 	return (
@@ -17,6 +18,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/topic/:topic" element={<Home />} />
+					<Route path="/articles/:article_id" element={<SingleArticle />} />
 				</Routes>
 				<Footer />
 			</div>
