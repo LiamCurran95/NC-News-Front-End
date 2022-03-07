@@ -17,9 +17,10 @@ export function fetchAllArticles() {
 
 export function fetchArticlesByTopic(topic) {
 	return mcAPI
-		.get(`/articles?topics=${topic}`)
-		.then(({ data: { topics } }) => {
-			return topics;
+		.get(`/articles?topic=${topic}`)
+		.then(({ data: { articles } }) => {
+			console.log(articles);
+			return articles;
 		})
 		.catch((err) => {
 			console.log(err);
