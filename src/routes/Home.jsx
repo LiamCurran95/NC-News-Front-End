@@ -6,8 +6,7 @@ import { useParams } from "react-router-dom";
 const ArticleList = () => {
 	const [articles, setArticles] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const { slug } = useParams();
-	const topic = slug;
+	const { topic } = useParams();
 
 	useEffect(() => {
 		if (!topic) {
