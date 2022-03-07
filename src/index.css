@@ -108,45 +108,28 @@ footer a {
 	border: 2px solid indianred;
 	color: indianred;
 }
-/* ItemCard */
-.itemCard p {
+
+/* ArticleCard */
+.articleCard p {
 	margin: 0;
 }
-.itemCard .price {
-	font-weight: 700;
-	font-size: 1.5rem;
+
+.articleCard .topic {
+	font-weight: 800;
 }
-.itemCard .category {
-	opacity: 50%;
+.articleCard_info .author a {
+	font-size: 1rem;
 }
-.itemCard_info .name a {
-	font-size: 1.25rem;
-	/* color: indianred; */
-}
-.itemCard_info {
+.articleCard_votes {
 	margin: 1rem 0;
 }
-.itemCard button {
-	margin-top: 1rem;
-}
 
-.itemCard_thumbnail {
-	height: 274px;
-	overflow: hidden;
-	background-color: #f5f5f5;
-}
 /* UserInfo */
 .userInfo .avatar {
 	max-width: 60px;
 	margin: 0.5rem 0;
 }
 
-.userInfo .avatar {
-	display: none;
-}
-.userInfo .username {
-	display: block;
-}
 .userInfo ul {
 	list-style-type: none;
 	padding: 0;

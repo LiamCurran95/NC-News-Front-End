@@ -6,7 +6,8 @@ import { useParams } from "react-router-dom";
 const ArticleList = () => {
 	const [articles, setArticles] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const { topic } = useParams();
+	const { slug } = useParams();
+	const topic = slug;
 
 	useEffect(() => {
 		if (!topic) {
@@ -38,9 +39,9 @@ const ArticleList = () => {
 						comment_count,
 					}) => {
 						return (
-							<div className="article-card">
+							<div className="articleCard">
 								<ArticleCard
-									key={`Article ${article_id}`}
+									key={`${article_id}`}
 									title={title}
 									author={author}
 									topic={topic}

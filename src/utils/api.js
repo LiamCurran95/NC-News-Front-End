@@ -5,9 +5,14 @@ const mcAPI = axios.create({
 });
 
 export function fetchAllArticles() {
-	return mcAPI.get("/articles").then(({ data: { articles } }) => {
-		return articles;
-	});
+	return mcAPI
+		.get("/articles")
+		.then(({ data: { articles } }) => {
+			return articles;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 }
 
 export function fetchArticlesByTopic(topic) {
@@ -22,7 +27,12 @@ export function fetchArticlesByTopic(topic) {
 }
 
 export function fetchAllTopics() {
-	return mcAPI.get("/topics").then(({ data: { topics } }) => {
-		return topics;
-	});
+	return mcAPI
+		.get("/topics")
+		.then(({ data: { topics } }) => {
+			return topics;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 }

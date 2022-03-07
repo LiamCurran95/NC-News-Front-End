@@ -13,8 +13,8 @@ const Navbar = () => {
 	return (
 		<nav className="Navbar">
 			<div className="filter">
-				{topic.map(({ topic }) => {
-					return <TopicFilter key={topic} topic={topic} />;
+				{topic.map(({ slug }) => {
+					return <TopicFilter key={slug} topic={slug} />;
 				})}
 			</div>
 		</nav>

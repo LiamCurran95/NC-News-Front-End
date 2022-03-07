@@ -11,11 +11,11 @@ const ArticleCard = ({
 		<article className="ArticleCard" key={article_id}>
 			<div className="ArticleCard_info">
 				<p className="topic">{title}</p>
+				<p className="author">{author}</p>
 				<p className="topic">{topic}</p>
-				<p className="author">${author}</p>
-				<p className="votes">${votes}</p>
-				<p className="comment_count">${comment_count}</p>
-				<p className="created_at">${created_at}</p>
+				<p className="votes">Votes: {votes}</p>
+				<p className="comment_count">Comment count: {comment_count}</p>
+				<p className="created_at">Published at:{created_at}</p>
 			</div>
 		</article>
 	);
