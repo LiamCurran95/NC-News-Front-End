@@ -1,13 +1,143 @@
+html {
+	box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+}
+img {
+	object-fit: cover;
+	width: 100%;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+button {
+	cursor: pointer;
+	border: none;
+	padding: 12px 16px;
+	font-family: inherit;
+	font-size: inherit;
+	border-radius: 4px;
+}
+/* Grid */
+.container {
+	max-width: 1440px;
+	margin: 2rem auto;
+	padding: 0 1rem;
+}
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 1rem;
+}
+/* Header */
+header {
+	background-color: #111111;
+	color: #ffffff;
+	min-height: 60px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	margin-bottom: 2rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.logo {
+	font-size: 1.825rem;
+	margin: 0 0 1rem 0;
+}
+/* Form */
+form {
+	text-align: left;
+	max-width: 360px;
+	margin: 0 auto;
+}
+input {
+	padding: 10px 8px;
+	font-family: inherit;
+	font-size: inherit;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+	width: 100%;
+}
+label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+form button {
+	display: block;
+	width: 100%;
+}
+
+/* Footer */
+
+footer {
+	background-color: #111111;
+	font-size: 1.25rem;
+	color: #ffffff;
+	padding: 2rem 1rem;
+}
+
+footer a {
+	color: #82d7f7;
+	text-decoration: underline;
+}
+
+/* Filter */
+.filter {
+	margin-bottom: 2rem;
+}
+.filter button {
+	margin: 0 0.5rem;
+	border: 2px solid #ccc;
+	background-color: transparent;
+	margin: 1rem 0;
+	border-radius: 30px;
+	transition: border 0.3s ease;
+}
+
+.filter button:hover {
+	border: 2px solid indianred;
+	color: indianred;
+}
+
+/* ArticleCard */
+.articleCard p {
+	margin: 0;
+}
+
+.articleCard .topic {
+	font-weight: 800;
+}
+.articleCard_info .author a {
+	font-size: 1rem;
+}
+.articleCard_votes {
+	margin: 1rem 0;
+}
+
+/* UserInfo */
+.userInfo .avatar {
+	max-width: 60px;
+	margin: 0.5rem 0;
+}
+
+.userInfo ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+.userInfo ul li {
+	margin-right: 2rem;
+	font-size: 1.25rem;
 }
