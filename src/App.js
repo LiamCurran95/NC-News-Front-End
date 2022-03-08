@@ -6,7 +6,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./routes/Home";
+import Home from "./routes/AllArticles";
 import SingleArticle from "./routes/SingleArticle";
 
 function App() {
