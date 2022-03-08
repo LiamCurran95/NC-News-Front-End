@@ -47,3 +47,14 @@ export function fetchArticleById(article_id) {
 			console.log(err);
 		});
 }
+
+export function voteOnArticle(article_id, vote) {
+	return mcAPI
+		.patch(`/articles/${article_id}`, { inc_votes: vote })
+		.then(({ data: { article } }) => {
+			return article;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+}
