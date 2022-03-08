@@ -58,3 +58,14 @@ export function voteOnArticle(article_id, vote) {
 			console.log(err);
 		});
 }
+
+export function fetchCommentsByArticleId(article_id) {
+	return mcAPI
+		.get(`/articles/${article_id}/comments`)
+		.then(({ data: { article_comments } }) => {
+			return article_comments;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+}
