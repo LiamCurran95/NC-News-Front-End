@@ -10,22 +10,12 @@ const SingleArticle = () => {
 	const { article_id } = useParams();
 
 	const handleVote = (value) => {
-		if (value > 0) {
-			setVotes((currentVotes) => currentVotes + 1);
-			setErr(null);
-			api.voteOnArticle(article_id, 1).catch((err) => {
-				setVotes((votes) => votes - 1);
-				setErr("Vote failed, please try again");
-			});
-		}
-		if (value < 0) {
-			setVotes((currentVotes) => currentVotes - 1);
-			setErr(null);
-			api.voteOnArticle(article_id, -1).catch((err) => {
-				setVotes((votes) => votes + 1);
-				setErr("Vote failed, please try again");
-			});
-		}
+		setVotes((currentVotes) => currentVotes + value);
+		setErr(null);
+		api.voteOnArticle(article_id, value).catch((err) => {
+			if (value) setVotes((votes) => votes - value);
+			setErr("Vote failed, please try again");
+		});
 	};
 
 	useEffect(() => {
@@ -38,7 +28,6 @@ const SingleArticle = () => {
 	}, [article_id]);
 
 	if (isLoading) return <p>Loading...</p>;
-	if (err) return <h1>{err}</h1>;
 
 	const published = article.created_at.toString().slice(0, 10);
 
@@ -58,6 +47,7 @@ const SingleArticle = () => {
 				>
 					Upvote Article <i className="arrow up"></i>
 				</button>
+				{err ? <p>{err}</p> : null}
 				<button
 					onClick={() => {
 						handleVote(-1);
