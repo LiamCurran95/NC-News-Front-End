@@ -25,10 +25,23 @@ const CommentList = ({ article_comments }) => {
 
 	return (
 		<div>
-			<button onClick={toggleShown}>
-				{commentsShown ? "Hide Comments" : "Show comments"}
+			<button onClick={toggleShown} className="comments-section-toggle">
+				{commentsShown ? (
+					<div className="comments-section">
+						<button className="comments-section-toggle">Hide comments</button>
+						{comments.map(({ votes, created_at, author, body }) => {
+							return (
+								(<ul>{author}</ul>),
+								(<ul>{created_at}</ul>),
+								(<ul>{votes}</ul>),
+								(<ul>{body}</ul>)
+							);
+						})}
+					</div>
+				) : (
+					"Show comments"
+				)}
 			</button>
-			{/* <div className="container-comments">{comments.map({article_id, author, body, comment_id, created_at, votes}) => {return ( <div>className</div>)} }</div> */}
 		</div>
 	);
 };
