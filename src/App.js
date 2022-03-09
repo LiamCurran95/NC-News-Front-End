@@ -14,7 +14,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<div className="App">
-				<Container maxWidth="xl" disableGutters="true">
+				<Container maxWidth="xl" disableGutters={true}>
 					<Header />
 					<Navbar />
 					<Routes>

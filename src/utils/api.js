@@ -40,7 +40,6 @@ export function fetchArticleById(article_id) {
 	return mcAPI
 		.get(`/articles/${article_id}`)
 		.then(({ data: { article } }) => {
-			console.log(article);
 			return article;
 		})
 		.catch((err) => {
@@ -64,5 +63,15 @@ export function fetchCommentsByArticleId(article_id) {
 		})
 		.catch((err) => {
 			console.log(err);
+		});
+}
+
+export function addCommentToArticle(article_id, { comment: { author, body } }) {
+	return mcAPI
+		.post(`/articles/${article_id}/comments`, article_id, {
+			comment: { author, body },
+		})
+		.then(({ data: { comment } }) => {
+			console.log(comment);
 		});
 }

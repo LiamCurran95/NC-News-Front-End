@@ -2,13 +2,15 @@ import * as api from "../utils/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CommentList from "../components/Comments";
-import { IconButton } from "@mui/material";
+import { IconButton, Box, TextField } from "@mui/material";
 import { ThumbUpOffAlt, ThumbDownOffAlt } from "@mui/icons-material/";
+import SubmitCommentForm from "../components/SubmitCommentForm";
 
 const SingleArticle = () => {
 	const [article, setArticle] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentVotes, setVotes] = useState(0);
+	const [comment, setComment] = useState("");
 	const [err, setErr] = useState(null);
 	const { article_id } = useParams();
 
@@ -63,6 +65,19 @@ const SingleArticle = () => {
 					<ThumbDownOffAlt fontSize="large" />
 				</IconButton>
 				<CommentList />
+			</div>
+			<div>
+				<Box
+					component="form"
+					sx={{
+						"& .MuiTextField-root": { m: 1, width: "25ch" },
+					}}
+					noValidate
+					autoComplete="off"
+				></Box>
+			</div>
+			<div>
+				<SubmitCommentForm comment={comment} />
 			</div>
 		</main>
 	);
