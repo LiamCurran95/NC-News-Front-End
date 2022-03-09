@@ -24,7 +24,7 @@ const ArticleList = () => {
 	if (isLoading) return <p>Loading...</p>;
 
 	return (
-		<main className="container">
+		<main className="container-articles">
 			<div className="grid">
 				{articles.map(
 					({

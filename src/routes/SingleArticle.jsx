@@ -1,6 +1,7 @@
 import * as api from "../utils/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import CommentList from "../components/Comments";
 
 const SingleArticle = () => {
 	const [article, setArticle] = useState({});
@@ -41,6 +42,7 @@ const SingleArticle = () => {
 				<p className="article_votes">{article.votes + currentVotes}</p>
 				<p className="article_comment_count">{article.comment_count}</p>
 				<button
+					className="singleArticle upvote"
 					onClick={() => {
 						handleVote(1);
 					}}
@@ -49,12 +51,14 @@ const SingleArticle = () => {
 				</button>
 				{err ? <p>{err}</p> : null}
 				<button
+					className="singleArticle downvote"
 					onClick={() => {
 						handleVote(-1);
 					}}
 				>
 					Downvote Article <i className="arrow down"></i>
 				</button>
+				<CommentList />
 			</div>
 		</main>
 	);
