@@ -1,8 +1,19 @@
 import * as api from "../utils/api";
 import { useState, useEffect } from "react";
+import * as React from "react";
 import { useParams } from "react-router-dom";
+import {
+	List,
+	ListItem,
+	ListItemIcon,
+	Divider,
+	ListItemText,
+	ListItemAvatar,
+	Avatar,
+	Typography,
+} from "@mui/material";
 
-const CommentList = ({ article_comments }) => {
+const CommentList = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [comments, setComments] = useState([]);
 	const [commentsShown, setCommentsShown] = useState(false);
@@ -32,10 +43,43 @@ const CommentList = ({ article_comments }) => {
 						{comments.map(({ votes, created_at, author, body }) => {
 							return (
 								<div>
-									<ul className="comments-section-author">{author}</ul>
-									<ul className="comments-section-created-at">{created_at}</ul>
-									<ul className="comments-section-votes">{votes}</ul>
-									<ul className="comments-section-body">{body}</ul>
+									<List
+										sx={{
+											width: "100%",
+											maxWidth: 1000,
+											bgcolor: "background.paper",
+										}}
+									>
+										<ListItem alignItems="flex-start">
+											<ListItemAvatar>
+												<Avatar
+													alt={author}
+													src="../public/generic-avatar.png"
+												/>
+											</ListItemAvatar>
+											<ListItemText
+												primary={author}
+												secondary={
+													<React.Fragment>
+														<Typography
+															sx={{ display: "inline" }}
+															component="span"
+															variant="body2"
+															color="text.primary"
+														></Typography>
+														{body}
+													</React.Fragment>
+												}
+											/>
+											<Divider variant="inset" component="li" />
+										</ListItem>
+										<ListItemText Primary="Votes: " secondary={votes} />
+										<ListItemText
+											Primary="Created at: "
+											secondary={created_at}
+										/>
+										<Divider variant="inset" component="li" />
+									</List>
 								</div>
 							);
 						})}
