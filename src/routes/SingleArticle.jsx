@@ -2,6 +2,8 @@ import * as api from "../utils/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CommentList from "../components/Comments";
+import { IconButton } from "@mui/material";
+import { ThumbUpOffAlt, ThumbDownOffAlt } from "@mui/icons-material/";
 
 const SingleArticle = () => {
 	const [article, setArticle] = useState({});
@@ -37,27 +39,29 @@ const SingleArticle = () => {
 			<div className="singleArticle">
 				<h1 className="article_title">{article.title}</h1>
 				<h2 className="article_author">{article.author}</h2>
-				<h3 className="article_topic">{article.topic}</h3>
+				<p className="article_body">{article.body}</p>
+				<h3 className="article_topic">#{article.topic}</h3>
 				<p className="article_created_at">{published}</p>
-				<p className="article_votes">{article.votes + currentVotes}</p>
-				<p className="article_comment_count">{article.comment_count}</p>
-				<button
-					className="singleArticle upvote"
-					onClick={() => {
-						handleVote(1);
-					}}
-				>
-					Upvote Article <i className="arrow up"></i>
-				</button>
+				<p className="article_votes">
+					Article votes: {article.votes + currentVotes}
+				</p>
+
 				{err ? <p>{err}</p> : null}
-				<button
-					className="singleArticle downvote"
-					onClick={() => {
-						handleVote(-1);
-					}}
+				<IconButton
+					// disabled={currentVotes === 1 ? true : false}
+					//add in disabled feature once profiles finalised
+					onClick={() => handleVote(1)}
+					color="primary"
 				>
-					Downvote Article <i className="arrow down"></i>
-				</button>
+					<ThumbUpOffAlt fontSize="large" />
+				</IconButton>
+				<IconButton
+					// disabled={currentVotes === -1 ? true : false}
+					onClick={() => handleVote(-1)}
+					color="primary"
+				>
+					<ThumbDownOffAlt fontSize="large" />
+				</IconButton>
 				<CommentList />
 			</div>
 		</main>
