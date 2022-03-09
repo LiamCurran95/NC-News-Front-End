@@ -1,5 +1,6 @@
 //IMPORT MIDDLEWARES
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Container } from "@mui/material";
 
 //IMPORT FILES
 import "./App.css";
@@ -13,14 +14,16 @@ function App() {
 	return (
 		<BrowserRouter>
 			<div className="App">
-				<Header />
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/topic/:topic" element={<Home />} />
-					<Route path="/articles/:article_id" element={<SingleArticle />} />
-				</Routes>
-				<Footer />
+				<Container maxWidth="xl" disableGutters="true">
+					<Header />
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/topic/:topic" element={<Home />} />
+						<Route path="/articles/:article_id" element={<SingleArticle />} />
+					</Routes>
+					<Footer />
+				</Container>
 			</div>
 		</BrowserRouter>
 	);

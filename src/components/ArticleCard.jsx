@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Card, CardActionArea } from "@mui/material";
 
 const ArticleCard = ({
 	article_id,
@@ -9,21 +10,19 @@ const ArticleCard = ({
 	author,
 	comment_count,
 }) => {
-	const published = created_at.toString().slice(0, 10);
 	return (
-		<article className="ArticleCard" key={article_id}>
-			<div className="ArticleCard_info">
-				<p className="title">{title}</p>
-				<p className="author">{author}</p>
-				<p className="topic">{topic}</p>
-				<p className="votes">Vote score: {votes}</p>
-				<p className="comment_count">Comment count: {comment_count}</p>
-				<p className="created_at">Published on: {published}</p>
-				<button className="article_button">
-					<Link to={`/articles/${article_id}`}>View this article</Link>
-				</button>
-			</div>
-		</article>
+		<Link to={`/articles/${article_id}`} style={{ textDecoration: "none" }}>
+			<CardActionArea className="grid">
+				<Card variant="outlined" className="article-card-info">
+					<h3 className="title">{title}</h3>
+					<h4 className="author">Author: {author} </h4>
+					<h5 className="comment_count">Comments: {comment_count} </h5>
+					<h5 className="votes">Article votes: {votes}</h5>
+					<h5 className="created_at">{created_at.slice(0, 10)}</h5>
+					<h5 className="topic">#{topic}</h5>
+				</Card>
+			</CardActionArea>
+		</Link>
 	);
 };
 

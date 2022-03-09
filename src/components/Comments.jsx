@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import {
 	List,
 	ListItem,
-	ListItemIcon,
 	Divider,
 	ListItemText,
 	ListItemAvatar,

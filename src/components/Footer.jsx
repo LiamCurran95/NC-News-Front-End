@@ -1,8 +1,17 @@
+import FlareIcon from "@mui/icons-material/Flare";
+import { Icon, Divider } from "@mui/material";
+
 const Footer = () => {
 	return (
 		<footer className="Footer">
 			<div>
-				Powered by <a href="https://reactjs.org/">React</a>
+				<Icon className="icon-flare">
+					<FlareIcon fontsize="large" />
+				</Icon>
+				Powered by Liam
+				<Icon className="icon-flare">
+					<FlareIcon fontsize="large" />
+				</Icon>
 			</div>
 		</footer>
 	);
