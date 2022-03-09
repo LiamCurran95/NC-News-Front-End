@@ -31,10 +31,12 @@ const CommentList = ({ article_comments }) => {
 						<button className="comments-section-toggle">Hide comments</button>
 						{comments.map(({ votes, created_at, author, body }) => {
 							return (
-								(<ul>{author}</ul>),
-								(<ul>{created_at}</ul>),
-								(<ul>{votes}</ul>),
-								(<ul>{body}</ul>)
+								<div>
+									<ul className="comments-section-author">{author}</ul>
+									<ul className="comments-section-created-at">{created_at}</ul>
+									<ul className="comments-section-votes">{votes}</ul>
+									<ul className="comments-section-body">{body}</ul>
+								</div>
 							);
 						})}
 					</div>
