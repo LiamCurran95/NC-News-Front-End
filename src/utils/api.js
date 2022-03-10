@@ -66,14 +66,10 @@ export function fetchCommentsByArticleId(article_id) {
 		});
 }
 
-export function addCommentToArticle(article_id, { comment: { author, body } }) {
-	//article_id needs to be number - it is formatted in the api request in SCF and reading correct here.
-	//comment format {author:body} all lowercase and it is
-	console.log(article_id, { author, body });
+export function addCommentToArticle(article_id, { comment }) {
 	return mcAPI
-		.post(`/articles/${article_id}/comments`, { author, body }, article_id)
+		.post(`/articles/${article_id}/comments`, comment, article_id)
 		.then(({ data }) => {
-			console.log(data);
 			return data;
 		});
 }

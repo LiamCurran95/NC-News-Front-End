@@ -1,6 +1,7 @@
-import * as api from "../utils/api";
-import TopicButton from "../components/TopicButton";
 import { useState, useEffect } from "react";
+
+import * as api from "../../utils/api";
+import TopicButton from "./TopicButton";
 
 const Navbar = () => {
 	const [topic, setTopic] = useState([]);

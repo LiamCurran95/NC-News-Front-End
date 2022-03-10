@@ -1,7 +1,10 @@
+//IMPORT REACT
 import * as api from "../utils/api.js";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ArticleCard from "../components/ArticleCard";
+
+//IMPORT COMPONENTS
+import ArticleCard from "../components/Articles/ArticleCard";
 
 const ArticleList = () => {
 	const [articles, setArticles] = useState([]);
@@ -26,9 +29,10 @@ const ArticleList = () => {
 
 	return (
 		<main className="grid">
-			{articles.map((article) => {
+			{articles.map((article, index) => {
 				return (
 					<ArticleCard
+						id={index}
 						title={article.title}
 						key={article.article_id}
 						article={article.article}
