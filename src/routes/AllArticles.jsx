@@ -5,30 +5,41 @@ import { useParams } from "react-router-dom";
 
 //IMPORT COMPONENTS
 import ArticleCard from "../components/Articles/ArticleCard";
+import SortArticles from "../components/Articles/SortArticles.jsx";
 
 const ArticleList = () => {
+	const { topic } = useParams();
 	const [articles, setArticles] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const { topic } = useParams();
+	const [sort, setSort] = useState("created_at");
+	const [order, setOrder] = useState("DESC");
 
 	useEffect(() => {
 		if (!topic) {
-			api.fetchAllArticles().then((data) => {
+			api.fetchAllArticles(sort, order).then((data) => {
 				setArticles(data);
 				setIsLoading(false);
 			});
 		} else {
-			api.fetchArticlesByTopic(topic).then((data) => {
+			api.fetchArticlesByTopic(topic, sort, order).then((data) => {
 				setArticles(data);
 				setIsLoading(false);
 			});
 		}
-	}, [topic]);
+	}, [topic, sort, order]);
 
 	if (isLoading) return <p>Loading...</p>;
 
 	return (
 		<main className="grid">
+			<>
+				<SortArticles
+					sort={sort}
+					setSort={setSort}
+					order={order}
+					setOrder={setOrder}
+				/>
+			</>
 			{articles.map((article, index) => {
 				return (
 					<ArticleCard

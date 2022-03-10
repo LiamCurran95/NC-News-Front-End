@@ -3,25 +3,31 @@ const mcAPI = axios.create({
 	baseURL: "https://lc-nc-news.herokuapp.com/api",
 });
 
-export function fetchAllArticles() {
+export function fetchAllArticles(sort, order) {
 	return mcAPI
-		.get("/articles")
-		.then(({ data: { articles } }) => {
-			return articles;
+		.get("/articles", {
+			params: {
+				sort_by: sort,
+				order: order,
+			},
 		})
-		.catch((err) => {
-			console.log(err);
+		.then(({ data: { articles } }) => {
+			console.log(articles);
+			return articles;
 		});
 }
 
-export function fetchArticlesByTopic(topic) {
+export function fetchArticlesByTopic(topic, sort, order) {
 	return mcAPI
-		.get(`/articles?topic=${topic}`)
+		.get("/articles", {
+			params: {
+				topic: topic,
+				sort_by: sort,
+				order: order,
+			},
+		})
 		.then(({ data: { articles } }) => {
 			return articles;
-		})
-		.catch((err) => {
-			console.log(err);
 		});
 }
 
