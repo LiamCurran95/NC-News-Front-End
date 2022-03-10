@@ -1,22 +1,27 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
+import * as api from "../utils/api";
 
 const SubmitCommentForm = (prop) => {
 	const { article_id } = useParams();
 	const { addedComment } = prop;
 	const [comment, setComment] = useState("");
+	const [err, setErr] = useState(null);
+	const { user } = useContext(UserContext);
 
 	const handleComment = (e) => {
 		e.preventDefault();
+		setErr(null);
 		const commentBody = e.target.elements[0].value;
-		const commentAuthor = 1;
-		const newComment = { comment: { commentAuthor, commentBody } };
+		const commentAuthor = user.username;
+		const newComment = {
+			comment: { author: commentAuthor, body: commentBody },
+		};
 
-		api.SubmitCommentForm(article_id, newComment).catch((err) => {
+		api.addCommentToArticle(+article_id, newComment).catch((err) => {
 			setErr("Your comment was not posted, please try again");
 		});
-
-		//figure out how to move state (i.e. logged in user and pass here, also setup a create new user page)
 	};
 
 	return (
@@ -31,11 +36,12 @@ const SubmitCommentForm = (prop) => {
 					placeholder="Write your comment here"
 					className="comment"
 					value={addedComment}
-					onChange={(e) => setComment(e.target.elements[0].value)}
+					onSubmit={(e) => setComment(e.target.elements[0].value)}
 				></input>
 				<button className="submit-button" type="submit">
 					Post your comment!
 				</button>
+				{err ? <p>{err}</p> : null}
 			</form>
 		</div>
 	);
