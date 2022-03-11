@@ -17,7 +17,6 @@ const CommentSection = ({ existing_comments, article_id, setComments }) => {
 	}, [article_id, setComments]);
 
 	if (isLoading) return <p>Loading...</p>;
-
 	if (err) return <h1 className="error">{err}</h1>;
 
 	return (

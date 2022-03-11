@@ -3,6 +3,7 @@ const ErrorPage = ({ error }) => {
 		<div>
 			<h1>{error.code}</h1>
 			<h1>{error.msg}</h1>
+
 		</div>
 	);
 };

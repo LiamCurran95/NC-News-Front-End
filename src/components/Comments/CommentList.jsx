@@ -1,5 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import * as api from "../../utils/api";
+import { UserContext } from "../../context/UserProvider";
+
 import {
 	List,
 	ListItem,
@@ -23,6 +25,9 @@ const CommentList = ({
 	body,
 	votes,
 }) => {
+	const {
+		user: { username },
+	} = useContext(UserContext);
 	const [deleteComment, setDeleteComment] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [err, setErr] = useState(null);
@@ -56,6 +61,7 @@ const CommentList = ({
 	}, [setComments, article_id, deleteComment]);
 
 	if (isLoading) return <p>Loading...</p>;
+	if (err) return <h1 className="error">{err}</h1>;
 
 	return (
 		<div>
@@ -85,14 +91,16 @@ const CommentList = ({
 						}
 					/>
 				</ListItem>
-				<ListItemButton>
-					<DeleteIcon
-						disabled={deleteComment}
-						onClick={() => {
-							handleDelete(comment_id);
-						}}
-					/>
-				</ListItemButton>
+				{username === author && (
+					<ListItemButton>
+						<DeleteIcon
+							disabled={deleteComment}
+							onClick={() => {
+								handleDelete(comment_id);
+							}}
+						/>
+					</ListItemButton>
+				)}
 				<ListItemText secondary={"Votes: " + votes} />
 				<ListItemText secondary={created_at} />
 				<Divider variant="inset" component="li" />

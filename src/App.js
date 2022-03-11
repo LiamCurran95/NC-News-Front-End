@@ -18,6 +18,7 @@ function App() {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="*" element={<ErrorPage />} />
 						<Route path="/topic/:topic" element={<Home />} />
 						<Route path="/articles/:article_id" element={<SingleArticle />} />
 						<Route

@@ -11,10 +11,13 @@ const ArticleList = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [sort, setSort] = useState("created_at");
 	const [order, setOrder] = useState("desc");
+	const [err, setErr] = useState(null);
 
 	useEffect(() => {
+		setErr(null);
 		if (!topic) {
 			setIsLoading(true);
+
 			api
 				.fetchAllArticles(sort, order)
 				.then((data) => {
@@ -29,6 +32,7 @@ const ArticleList = () => {
 				});
 		} else {
 			setIsLoading(true);
+
 			api
 				.fetchArticlesByTopic(topic, sort, order)
 				.then((data) => {
@@ -38,12 +42,14 @@ const ArticleList = () => {
 				.catch(() => {
 					setErr("No articles with that topic exist");
 					setIsLoading(false);
+
 				});
 		}
 	}, [topic, sort, order]);
 
 	if (isLoading) return <p>Loading...</p>;
-	if (err) return <h1>{err}</h1>;
+
+	if (err) return <h1 className="error">{err}</h1>;
 
 	return (
 		<main className="grid">
