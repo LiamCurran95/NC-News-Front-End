@@ -11,7 +11,6 @@ const ArticleList = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [sort, setSort] = useState("created_at");
 	const [order, setOrder] = useState("desc");
-	const [err, setErr] = useState(null);
 
 	useEffect(() => {
 		setErr(null);
@@ -42,7 +41,6 @@ const ArticleList = () => {
 				.catch(() => {
 					setErr("No articles with that topic exist");
 					setIsLoading(false);
-
 				});
 		}
 	}, [topic, sort, order]);
