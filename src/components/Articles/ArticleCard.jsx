@@ -1,4 +1,6 @@
+//IMPORT REACT
 import { Link } from "react-router-dom";
+//IMPORT MUI
 import { Card, CardActionArea } from "@mui/material";
 
 const ArticleCard = ({
@@ -18,7 +20,7 @@ const ArticleCard = ({
 					<h4 className="author">Author: {author} </h4>
 					<h5 className="comment_count">Comments: {comment_count} </h5>
 					<h5 className="votes">Article votes: {votes}</h5>
-					<h5 className="created_at">{created_at.slice(0, 10)}</h5>
+					<h5 className="created_at">{new Date(created_at).toUTCString()}</h5>
 					<h5 className="topic">#{topic}</h5>
 				</Card>
 			</CardActionArea>

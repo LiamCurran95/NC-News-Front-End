@@ -1,16 +1,16 @@
 import FlareIcon from "@mui/icons-material/Flare";
-import { Icon, Divider } from "@mui/material";
+import { Icon } from "@mui/material";
 
 const Footer = () => {
 	return (
 		<footer className="Footer">
 			<div>
 				<Icon className="icon-flare">
-					<FlareIcon fontsize="large" />
+					<FlareIcon fontSize="large" />
 				</Icon>
 				Powered by Liam
 				<Icon className="icon-flare">
-					<FlareIcon fontsize="large" />
+					<FlareIcon fontSize="large" />
 				</Icon>
 			</div>
 		</footer>
