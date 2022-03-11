@@ -9,6 +9,7 @@ import Navbar from "./components/Structure/Navbar";
 import Footer from "./components/Structure/Footer";
 import Home from "./routes/AllArticles";
 import SingleArticle from "./routes/SingleArticle";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="*" element={<ErrorPage />} />
 						<Route path="/topic/:topic" element={<Home />} />
 						<Route path="/articles/:article_id" element={<SingleArticle />} />
 					</Routes>

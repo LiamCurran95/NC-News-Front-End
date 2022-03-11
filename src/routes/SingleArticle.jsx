@@ -22,7 +22,7 @@ const SingleArticle = () => {
 	const handleVote = (value) => {
 		setVotes((currentVotes) => currentVotes + value);
 		setErr(null);
-		api.voteOnArticle(article_id, value).catch((err) => {
+		api.voteOnArticle(article_id, value).catch(() => {
 			if (value) setVotes((votes) => votes - value);
 			setErr("Vote failed, please try again");
 		});
