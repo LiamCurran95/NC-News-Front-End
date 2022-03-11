@@ -1,13 +1,11 @@
-//IMPORT REACT
 import * as api from "../utils/api.js";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-//IMPORT COMPONENTS
 import ArticleCard from "../components/Articles/ArticleCard";
 import SortArticles from "../components/Articles/SortArticles.jsx";
 
 const ArticleList = () => {
+	const [err, setErr] = useState(null);
 	const { topic } = useParams();
 	const [articles, setArticles] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +16,8 @@ const ArticleList = () => {
 	useEffect(() => {
 		setErr(null);
 		if (!topic) {
+			setIsLoading(true);
+
 			api
 				.fetchAllArticles(sort, order)
 				.then((data) => {
@@ -25,9 +25,14 @@ const ArticleList = () => {
 					setIsLoading(false);
 				})
 				.catch(() => {
-					setErr("Articles could not load, please try refreshing your browser");
+					setErr(
+						"Articles could not load, please refresh your browser to try again"
+					);
+					setIsLoading(false);
 				});
 		} else {
+			setIsLoading(true);
+
 			api
 				.fetchArticlesByTopic(topic, sort, order)
 				.then((data) => {
@@ -35,12 +40,15 @@ const ArticleList = () => {
 					setIsLoading(false);
 				})
 				.catch(() => {
-					setErr("Articles could not load, please try refreshing your browser");
+					setErr("No articles with that topic exist");
+					setIsLoading(false);
+
 				});
 		}
 	}, [topic, sort, order]);
 
 	if (isLoading) return <p>Loading...</p>;
+
 	if (err) return <h1 className="error">{err}</h1>;
 
 	return (

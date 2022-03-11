@@ -31,25 +31,15 @@ export function fetchArticlesByTopic(topic, sort, order) {
 }
 
 export function fetchAllTopics() {
-	return mcAPI
-		.get("/topics")
-		.then(({ data: { topics } }) => {
-			return topics;
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	return mcAPI.get("/topics").then(({ data: { topics } }) => {
+		return topics;
+	});
 }
 
 export function fetchArticleById(article_id) {
-	return mcAPI
-		.get(`/articles/${article_id}`)
-		.then(({ data: { article } }) => {
-			return article;
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	return mcAPI.get(`/articles/${article_id}`).then(({ data: { article } }) => {
+		return article;
+	});
 }
 
 export function voteOnArticle(article_id, vote) {
@@ -65,9 +55,6 @@ export function fetchCommentsByArticleId(article_id) {
 		.get(`/articles/${article_id}/comments`)
 		.then(({ data: { article_comments } }) => {
 			return article_comments;
-		})
-		.catch((err) => {
-			console.log(err);
 		});
 }
 

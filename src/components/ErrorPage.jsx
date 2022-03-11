@@ -1,11 +1,9 @@
-//IMPORT REACT
-import { useState, useEffect } from "react";
-
-const ErrorPage = (props) => {
-	const [error, setError] = useState(null);
+const ErrorPage = ({ error }) => {
 	return (
 		<div>
-			<h1>Error</h1>
+			<h1>{error.code}</h1>
+			<h1>{error.msg}</h1>
+
 		</div>
 	);
 };

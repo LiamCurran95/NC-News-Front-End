@@ -1,8 +1,6 @@
-//IMPORT MIDDLEWARES
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Container } from "@mui/material";
 
-//IMPORT FILES
 import "./App.css";
 import Header from "./components/Structure/Header";
 import Navbar from "./components/Structure/Navbar";
@@ -23,6 +21,12 @@ function App() {
 						<Route path="*" element={<ErrorPage />} />
 						<Route path="/topic/:topic" element={<Home />} />
 						<Route path="/articles/:article_id" element={<SingleArticle />} />
+						<Route
+							path="/*"
+							element={
+								<ErrorPage error={{ code: 404, msg: "Page not found" }} />
+							}
+						/>
 					</Routes>
 					<Footer />
 				</Container>
