@@ -81,6 +81,6 @@ export function addCommentToArticle(article_id, { comment }) {
 
 export function deleteCommentFromArticle(comment_id) {
 	return mcAPI.delete(`/comments/${comment_id}`).then(({ data }) => {
-		console.log(data);
+		return data;
 	});
 }

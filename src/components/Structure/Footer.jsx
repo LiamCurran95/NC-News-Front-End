@@ -8,10 +8,6 @@ const Footer = () => {
 				<Icon className="icon-flare">
 					<FlareIcon fontSize="large" />
 				</Icon>
-				Powered by Liam
-				<Icon className="icon-flare">
-					<FlareIcon fontSize="large" />
-				</Icon>
 			</div>
 		</footer>
 	);

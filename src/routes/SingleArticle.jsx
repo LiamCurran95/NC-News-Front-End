@@ -76,7 +76,7 @@ const SingleArticle = () => {
 				/>
 
 				<CommentSection
-					comments={comments}
+					existing_comments={comments}
 					article_id={article_id}
 					comment_count={article.comment_count}
 					setComments={setComments}

@@ -1,5 +1,5 @@
 //IMPORT REACT
-import * as React from "react";
+import { useState, useEffect, Fragment } from "react";
 //IMPORT API
 import * as api from "../../utils/api";
 //IMPORT MUI
@@ -16,11 +16,49 @@ import {
 
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const CommentList = (comment) => {
-	const handleDelete = (comment_id) => {
-		console.log(comment_id);
-		// api.deleteCommentFromArticle(comment_id);
+const CommentList = ({
+	setComments,
+	existing_comments,
+	comment_id,
+	article_id,
+	created_at,
+	author,
+	body,
+	votes,
+}) => {
+	const [deleteComment, setDeleteComment] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [err, setErr] = useState(null);
+
+	const handleDelete = (deletedComment) => {
+		setDeleteComment(true);
+		setErr(null);
+		api
+			.deleteCommentFromArticle(deletedComment)
+			.then(() => {
+				setDeleteComment(false);
+				const newComments = existing_comments.filter(
+					(comment) => comment.comment_id !== comment_id
+				);
+				setComments(newComments);
+			})
+			.catch(() => {
+				setDeleteComment(false);
+				setErr("Comment was not deleted, please try again");
+			});
 	};
+
+	useEffect(() => {
+		if (deleteComment === true) {
+			api.fetchCommentsByArticleId(article_id).then((article_comments) => {
+				setComments(article_comments);
+				setIsLoading(false);
+				setErr(null);
+			});
+		}
+	}, [setComments, article_id, deleteComment]);
+
+	if (isLoading) return <p>Loading...</p>;
 
 	return (
 		<div>
@@ -33,31 +71,33 @@ const CommentList = (comment) => {
 			>
 				<ListItem alignItems="flex-start">
 					<ListItemAvatar>
-						<Avatar alt={comment.author} src="../public/generic-avatar.png" />
+						<Avatar alt={author} src="../public/generic-avatar.png" />
 					</ListItemAvatar>
-					<ListItemButton>
-						<DeleteIcon onClick={handleDelete(comment.comment_id)} />
-					</ListItemButton>
-					<Divider variant="inset" component="li" />
-
 					<ListItemText
-						primary={comment.author}
+						primary={author}
 						secondary={
-							<React.Fragment>
+							<Fragment>
 								<Typography
 									sx={{ display: "inline" }}
 									component="span"
 									variant="body2"
 									color="text.primary"
 								></Typography>
-								{comment.body}
-							</React.Fragment>
+								{body}
+							</Fragment>
 						}
 					/>
-					<Divider variant="inset" component="li" />
 				</ListItem>
-				<ListItemText Primary="Votes: " secondary={comment.votes} />
-				<ListItemText Primary="Created at: " secondary={comment.created_at} />
+				<ListItemButton>
+					<DeleteIcon
+						disabled={deleteComment}
+						onClick={() => {
+							handleDelete(comment_id);
+						}}
+					/>
+				</ListItemButton>
+				<ListItemText secondary={"Votes: " + votes} />
+				<ListItemText secondary={created_at} />
 				<Divider variant="inset" component="li" />
 			</List>
 		</div>
