@@ -12,7 +12,7 @@ const ArticleList = () => {
 	const [articles, setArticles] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [sort, setSort] = useState("created_at");
-	const [order, setOrder] = useState("DESC");
+	const [order, setOrder] = useState("desc");
 
 	useEffect(() => {
 		if (!topic) {

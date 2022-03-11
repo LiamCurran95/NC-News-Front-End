@@ -27,7 +27,7 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 					<MenuItem value="">
 						<em>None</em>
 					</MenuItem>
-					<MenuItem value={"date"}>Created at</MenuItem>
+					<MenuItem value={"created_at"}>Created at</MenuItem>
 					<MenuItem value={"title"}>Title</MenuItem>
 					<MenuItem value={"comment_count"}>Comment count</MenuItem>
 					<MenuItem value={"votes"}>Votes</MenuItem>

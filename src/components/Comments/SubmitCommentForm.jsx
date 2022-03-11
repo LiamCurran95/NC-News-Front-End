@@ -28,9 +28,10 @@ const SubmitCommentForm = (
 
 		api
 			.addCommentToArticle(+article_id, newComment)
-			.then((comment) => {
+			.then(({ comment }) => {
 				setPostingComment(false);
 				setComments((existing_comments) => {
+					console.log(comment);
 					const newComments = [...existing_comments];
 					newComments.push(comment);
 					return newComments;
