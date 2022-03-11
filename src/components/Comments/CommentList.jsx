@@ -1,8 +1,5 @@
-//IMPORT REACT
 import { useState, useEffect, Fragment } from "react";
-//IMPORT API
 import * as api from "../../utils/api";
-//IMPORT MUI
 import {
 	List,
 	ListItem,

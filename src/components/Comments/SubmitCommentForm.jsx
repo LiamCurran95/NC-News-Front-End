@@ -1,10 +1,6 @@
-//IMPORT REACT
 import { useState, useContext } from "react";
-//IMPORT API
 import * as api from "../../utils/api";
-//IMPORT CONTEXT
 import { UserContext } from "../../context/UserProvider";
-//IMPORT MUI
 import { Box, TextField, Button } from "@mui/material";
 
 const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {

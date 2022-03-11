@@ -1,13 +1,11 @@
-//IMPORT REACT
 import * as api from "../utils/api.js";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-//IMPORT COMPONENTS
 import ArticleCard from "../components/Articles/ArticleCard";
 import SortArticles from "../components/Articles/SortArticles.jsx";
 
 const ArticleList = () => {
+	const [err, setErr] = useState(null);
 	const { topic } = useParams();
 	const [articles, setArticles] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -16,19 +14,36 @@ const ArticleList = () => {
 
 	useEffect(() => {
 		if (!topic) {
-			api.fetchAllArticles(sort, order).then((data) => {
-				setArticles(data);
-				setIsLoading(false);
-			});
+			setIsLoading(true);
+			api
+				.fetchAllArticles(sort, order)
+				.then((data) => {
+					setArticles(data);
+					setIsLoading(false);
+				})
+				.catch(() => {
+					setErr(
+						"Articles could not load, please refresh your browser to try again"
+					);
+					setIsLoading(false);
+				});
 		} else {
-			api.fetchArticlesByTopic(topic, sort, order).then((data) => {
-				setArticles(data);
-				setIsLoading(false);
-			});
+			setIsLoading(true);
+			api
+				.fetchArticlesByTopic(topic, sort, order)
+				.then((data) => {
+					setArticles(data);
+					setIsLoading(false);
+				})
+				.catch(() => {
+					setErr("No articles with that topic exist");
+					setIsLoading(false);
+				});
 		}
 	}, [topic, sort, order]);
 
 	if (isLoading) return <p>Loading...</p>;
+	if (err) return <h1>{err}</h1>;
 
 	return (
 		<main className="grid">

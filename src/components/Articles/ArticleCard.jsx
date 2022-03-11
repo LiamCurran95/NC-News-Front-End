@@ -1,6 +1,4 @@
-//IMPORT REACT
 import { Link } from "react-router-dom";
-//IMPORT MUI
 import { Card, CardActionArea } from "@mui/material";
 
 const ArticleCard = ({
