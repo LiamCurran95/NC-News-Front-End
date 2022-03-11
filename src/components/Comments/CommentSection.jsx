@@ -40,6 +40,8 @@ const CommentSection = ({ comments, article_id, setComments }) => {
 								votes={comment.votes}
 								body={comment.body}
 								created_at={new Date(comment.created_at).toUTCString()}
+								setComments={setComments}
+								comment_id={comment.comment_id}
 							/>
 						))}
 					</div>

@@ -4,8 +4,6 @@ const mcAPI = axios.create({
 });
 
 export function fetchAllArticles(sort, order) {
-	console.log(sort, "sort");
-	console.log(order, "order");
 	return mcAPI
 		.get("/articles", {
 			params: {
@@ -81,31 +79,8 @@ export function addCommentToArticle(article_id, { comment }) {
 		});
 }
 
-/*
-		describe("POST /api/articles/:article_id/comments", () => {
-			test("Status 200 - Return body contains posted comment", () => {
-				const comment = {
-					author: "butter_bridge",
-					body: "Wow,what a great comment!",
-				};
-				const articleID = 9;
-				return request(app)
-					.post(`/api/articles/${articleID}/comments`)
-					.send(comment, articleID)
-					.expect(201)
-					.then(({ body }) => {
-						expect(body).toEqual(
-							expect.objectContaining({
-								comment: {
-									article_id: expect.any(Number),
-									author: expect.any(String),
-									body: expect.any(String),
-									comment_id: expect.any(Number),
-									created_at: expect.any(String),
-									votes: expect.any(Number),
-								},
-							})
-						);
-					});
-			});
-			*/
+export function deleteCommentFromArticle(comment_id) {
+	return mcAPI.delete(`/comments/${comment_id}`).then(({ data }) => {
+		console.log(data);
+	});
+}

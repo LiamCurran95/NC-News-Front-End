@@ -65,6 +65,7 @@ const SingleArticle = () => {
 				<IconButton onClick={() => handleVote(-1)} color="primary">
 					<ThumbDownOffAlt fontSize="large" />
 				</IconButton>
+
 				{err ? <p>{err}</p> : null}
 
 				<SubmitCommentForm

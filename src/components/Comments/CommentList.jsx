@@ -1,17 +1,27 @@
 //IMPORT REACT
 import * as React from "react";
+//IMPORT API
+import * as api from "../../utils/api";
 //IMPORT MUI
 import {
 	List,
 	ListItem,
-	Divider,
 	ListItemText,
 	ListItemAvatar,
+	ListItemButton,
+	Divider,
 	Avatar,
 	Typography,
 } from "@mui/material";
 
+import DeleteIcon from "@mui/icons-material/Delete";
+
 const CommentList = (comment) => {
+	const handleDelete = (comment_id) => {
+		console.log(comment_id);
+		// api.deleteCommentFromArticle(comment_id);
+	};
+
 	return (
 		<div>
 			<List
@@ -25,6 +35,11 @@ const CommentList = (comment) => {
 					<ListItemAvatar>
 						<Avatar alt={comment.author} src="../public/generic-avatar.png" />
 					</ListItemAvatar>
+					<ListItemButton>
+						<DeleteIcon onClick={handleDelete(comment.comment_id)} />
+					</ListItemButton>
+					<Divider variant="inset" component="li" />
+
 					<ListItemText
 						primary={comment.author}
 						secondary={
