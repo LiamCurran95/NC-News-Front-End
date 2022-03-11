@@ -27,7 +27,7 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 					<MenuItem value="">
 						<em>None</em>
 					</MenuItem>
-					<MenuItem value={"created_at"}>Created at</MenuItem>
+					<MenuItem value={"date"}>Created at</MenuItem>
 					<MenuItem value={"title"}>Title</MenuItem>
 					<MenuItem value={"comment_count"}>Comment count</MenuItem>
 					<MenuItem value={"votes"}>Votes</MenuItem>
@@ -43,8 +43,8 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 					label="Order by"
 					onChange={handleOrder}
 				>
-					<MenuItem value={"ASC"}>Ascending</MenuItem>
-					<MenuItem value={"DESC"}>Descending</MenuItem>
+					<MenuItem value={"asc"}>Ascending</MenuItem>
+					<MenuItem value={"desc"}>Descending</MenuItem>
 				</Select>
 			</FormControl>
 		</div>

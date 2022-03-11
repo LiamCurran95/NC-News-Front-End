@@ -4,6 +4,8 @@ const mcAPI = axios.create({
 });
 
 export function fetchAllArticles(sort, order) {
+	console.log(sort, "sort");
+	console.log(order, "order");
 	return mcAPI
 		.get("/articles", {
 			params: {
@@ -12,7 +14,6 @@ export function fetchAllArticles(sort, order) {
 			},
 		})
 		.then(({ data: { articles } }) => {
-			console.log(articles);
 			return articles;
 		});
 }
