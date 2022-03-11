@@ -22,7 +22,7 @@ const SingleArticle = () => {
 	const handleVote = (value) => {
 		setVotes((currentVotes) => currentVotes + value);
 		setErr(null);
-		api.voteOnArticle(article_id, value).catch((err) => {
+		api.voteOnArticle(article_id, value).catch(() => {
 			if (value) setVotes((votes) => votes - value);
 			setErr("Vote failed, please try again");
 		});
@@ -65,6 +65,7 @@ const SingleArticle = () => {
 				<IconButton onClick={() => handleVote(-1)} color="primary">
 					<ThumbDownOffAlt fontSize="large" />
 				</IconButton>
+
 				{err ? <p>{err}</p> : null}
 
 				<SubmitCommentForm
@@ -75,7 +76,7 @@ const SingleArticle = () => {
 				/>
 
 				<CommentSection
-					comments={comments}
+					existing_comments={comments}
 					article_id={article_id}
 					comment_count={article.comment_count}
 					setComments={setComments}

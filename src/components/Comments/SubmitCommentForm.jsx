@@ -7,11 +7,7 @@ import { UserContext } from "../../context/UserProvider";
 //IMPORT MUI
 import { Box, TextField, Button } from "@mui/material";
 
-const SubmitCommentForm = (
-	{ article_id, existing_comments, setComments },
-	prop
-) => {
-	const { addedComment } = prop;
+const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 	const { user } = useContext(UserContext);
 	const [err, setErr] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -31,11 +27,11 @@ const SubmitCommentForm = (
 			.then(({ comment }) => {
 				setPostingComment(false);
 				setComments((existing_comments) => {
-					console.log(comment);
 					const newComments = [...existing_comments];
 					newComments.push(comment);
 					return newComments;
 				});
+				setIsLoading(false);
 			})
 			.catch(() => {
 				setPostingComment(false);

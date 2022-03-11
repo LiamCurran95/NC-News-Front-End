@@ -13,22 +13,35 @@ const ArticleList = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [sort, setSort] = useState("created_at");
 	const [order, setOrder] = useState("desc");
+	const [err, setErr] = useState(null);
 
 	useEffect(() => {
+		setErr(null);
 		if (!topic) {
-			api.fetchAllArticles(sort, order).then((data) => {
-				setArticles(data);
-				setIsLoading(false);
-			});
+			api
+				.fetchAllArticles(sort, order)
+				.then((data) => {
+					setArticles(data);
+					setIsLoading(false);
+				})
+				.catch(() => {
+					setErr("Articles could not load, please try refreshing your browser");
+				});
 		} else {
-			api.fetchArticlesByTopic(topic, sort, order).then((data) => {
-				setArticles(data);
-				setIsLoading(false);
-			});
+			api
+				.fetchArticlesByTopic(topic, sort, order)
+				.then((data) => {
+					setArticles(data);
+					setIsLoading(false);
+				})
+				.catch(() => {
+					setErr("Articles could not load, please try refreshing your browser");
+				});
 		}
 	}, [topic, sort, order]);
 
 	if (isLoading) return <p>Loading...</p>;
+	if (err) return <h1 className="error">{err}</h1>;
 
 	return (
 		<main className="grid">

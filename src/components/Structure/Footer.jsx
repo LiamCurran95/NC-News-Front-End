@@ -6,11 +6,7 @@ const Footer = () => {
 		<footer className="Footer">
 			<div>
 				<Icon className="icon-flare">
-					<FlareIcon fontSize="large" />
-				</Icon>
-				Powered by Liam
-				<Icon className="icon-flare">
-					<FlareIcon fontSize="large" />
+					<FlareIcon fontSize="small" />
 				</Icon>
 			</div>
 		</footer>
