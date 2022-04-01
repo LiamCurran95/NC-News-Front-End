@@ -50,15 +50,15 @@ const ArticleList = () => {
 	if (err) return <h1 className="error">{err}</h1>;
 
 	return (
-		<main className="grid">
-			<>
+		<main className="article-cards">
+			<div className="sort-articles-buttons">
 				<SortArticles
 					sort={sort}
 					setSort={setSort}
 					order={order}
 					setOrder={setOrder}
 				/>
-			</>
+			</div>
 			{articles.map((article, index) => {
 				return (
 					<ArticleCard

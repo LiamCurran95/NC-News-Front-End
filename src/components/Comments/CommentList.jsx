@@ -95,7 +95,7 @@ const CommentList = ({
 					<ListItemButton>
 						<DeleteIcon
 							disabled={deleteComment}
-							onClick={() => {
+							if (err)={() => {
 								handleDelete(comment_id);
 							}}
 						/>

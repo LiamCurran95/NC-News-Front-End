@@ -6,7 +6,7 @@ const Header = () => {
 	const { user } = useContext(UserContext);
 
 	return (
-		<header className="Header">
+		<header className="header">
 			<h1 className="logo">
 				<Link to="/">NC News</Link>
 			</h1>

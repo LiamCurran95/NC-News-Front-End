@@ -50,7 +50,7 @@ const SingleArticle = () => {
 	if (err) return <h1>{err}</h1>;
 
 	return (
-		<main className="container">
+		<main className="grid">
 			<div className="singleArticle">
 				<h1 className="article_title">{article.title}</h1>
 				<h2 className="article_author">{article.author}</h2>
