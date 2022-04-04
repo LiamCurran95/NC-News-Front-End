@@ -51,7 +51,7 @@ const SingleArticle = () => {
 
 	return (
 		<main className="grid">
-			<div className="singleArticle">
+			<div className="single-article">
 				<h1 className="article_title">{article.title}</h1>
 				<h2 className="article_author">{article.author}</h2>
 				<p className="article_body">{article.body}</p>

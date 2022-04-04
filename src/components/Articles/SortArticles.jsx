@@ -16,10 +16,10 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 	return (
 		<div>
 			<FormControl sx={{ m: 1, minWidth: 120 }}>
-				<InputLabel id="demo-simple-select-helper-label">Sort by</InputLabel>
+				<InputLabel id="select-helper-label">Sort by</InputLabel>
 				<Select
-					labelId="demo-simple-select-helper-label"
-					id="demo-simple-select-helper"
+					labelId="select-helper-label"
+					id="select-helper"
 					value={sort}
 					label="Sort by"
 					onChange={handleSort}
@@ -35,10 +35,10 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 				</Select>
 			</FormControl>
 			<FormControl sx={{ m: 1, minWidth: 120 }}>
-				<InputLabel id="demo-simple-select-helper-label">Sort by</InputLabel>
+				<InputLabel id="select-helper-label">Sort by</InputLabel>
 				<Select
-					labelId="demo-simple-select-helper-label"
-					id="demo-simple-select-helper"
+					labelId="select-helper-label"
+					id="select-helper"
 					value={order}
 					label="Order by"
 					onChange={handleOrder}

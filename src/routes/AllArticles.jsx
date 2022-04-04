@@ -59,22 +59,24 @@ const ArticleList = () => {
 					setOrder={setOrder}
 				/>
 			</div>
-			{articles.map((article, index) => {
-				return (
-					<ArticleCard
-						id={index}
-						title={article.title}
-						key={article.article_id}
-						article={article.article}
-						author={article.author}
-						topic={article.topic}
-						created_at={article.created_at}
-						votes={article.votes}
-						comment_count={article.comment_count}
-						article_id={article.article_id}
-					/>
-				);
-			})}
+			<div className="article-card-map">
+				{articles.map((article, index) => {
+					return (
+						<ArticleCard
+							id={index}
+							title={article.title}
+							key={article.article_id}
+							article={article.article}
+							author={article.author}
+							topic={article.topic}
+							created_at={article.created_at}
+							votes={article.votes}
+							comment_count={article.comment_count}
+							article_id={article.article_id}
+						/>
+					);
+				})}
+			</div>
 		</main>
 	);
 };

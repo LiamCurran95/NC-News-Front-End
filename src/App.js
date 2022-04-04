@@ -13,7 +13,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<div className="App">
-				<Container maxWidth="xl" disableGutters={true}>
+				<Container maxWidth="auto" disableGutters={true}>
 					<Header />
 					<Navbar />
 					<Routes>
