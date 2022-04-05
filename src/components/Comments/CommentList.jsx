@@ -7,7 +7,6 @@ import {
 	ListItem,
 	ListItemText,
 	ListItemAvatar,
-	ListItemButton,
 	Divider,
 	Avatar,
 	Typography,
