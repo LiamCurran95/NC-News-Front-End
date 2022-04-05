@@ -18,7 +18,12 @@ function App() {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="*" element={<ErrorPage />} />
+						<Route
+							path="*"
+							element={
+								<ErrorPage error={{ code: 404, msg: "Page not found" }} />
+							}
+						/>
 						<Route path="/topic/:topic" element={<Home />} />
 						<Route path="/articles/:article_id" element={<SingleArticle />} />
 						<Route
