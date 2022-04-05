@@ -11,7 +11,7 @@ const ArticleCard = ({
 	comment_count,
 }) => {
 	return (
-		<Link to={`/articles/${article_id}`} style={{ textDecoration: "none" }}>
+		<Link to={`/articles/${article_id}`}>
 			<CardActionArea className="grid">
 				<Card variant="outlined" className="article-card-info">
 					<h3 className="title">{title}</h3>

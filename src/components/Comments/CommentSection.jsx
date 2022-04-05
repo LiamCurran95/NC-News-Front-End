@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react";
 import * as api from "../../utils/api";
 import CommentList from "./CommentList";
+import { compareCommentDate } from "../../utils/compareCommentDate";
 
-const CommentSection = ({ existing_comments, article_id, setComments }) => {
+const CommentSection = ({
+	existing_comments,
+	article_id,
+	setComments,
+	comments,
+}) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [err, setErr] = useState(null);
 
 	useEffect(() => {
 		if (article_id) {
 			api.fetchCommentsByArticleId(article_id).then((article_comments) => {
-				setComments(article_comments);
+				const sortedComments = compareCommentDate(article_comments);
+				setComments(sortedComments);
 				setIsLoading(false);
 				setErr(null);
 			});

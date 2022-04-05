@@ -13,11 +13,9 @@ const Navbar = () => {
 
 	return (
 		<nav className="navbar">
-			<div>
-				{topic.map(({ slug }) => {
-					return <TopicButton key={slug} topic={slug} />;
-				})}
-			</div>
+			{topic.map(({ slug }) => {
+				return <TopicButton key={slug} topic={slug} />;
+			})}
 		</nav>
 	);
 };

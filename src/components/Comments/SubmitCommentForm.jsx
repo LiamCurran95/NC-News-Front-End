@@ -14,7 +14,6 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 		e.preventDefault();
 		setPostingComment(true);
 		const commentBody = e.target.elements[0].value;
-		console.log(e.target.elements[0].value);
 		const newComment = {
 			comment: { author: user.username, body: commentBody },
 		};

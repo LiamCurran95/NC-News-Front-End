@@ -82,7 +82,6 @@ const CommentList = ({
 									sx={{ display: "inline" }}
 									component="span"
 									variant="body2"
-									color="text.primary"
 								></Typography>
 								{body}
 							</Fragment>

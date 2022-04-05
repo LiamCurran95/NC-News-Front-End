@@ -5,6 +5,7 @@ import { IconButton } from "@mui/material";
 import { ThumbUpOffAlt, ThumbDownOffAlt } from "@mui/icons-material/";
 import CommentSection from "../components/Comments/CommentSection";
 import SubmitCommentForm from "../components/Comments/SubmitCommentForm";
+import { compareCommentDate } from "../utils/compareCommentDate";
 
 const SingleArticle = () => {
 	const [err, setErr] = useState(null);
@@ -42,12 +43,12 @@ const SingleArticle = () => {
 				})
 				.then(() => {
 					api.fetchCommentsByArticleId(article_id).then((article_comments) => {
-						setComments(article_comments);
+						const sortedComments = compareCommentDate(article_comments);
+						setComments(sortedComments);
 						setIsLoading(false);
 					});
 				})
 				.catch(() => {
-					console.log("here");
 					setErr("No article by that ID exists, please try again");
 					setIsLoading(false);
 				});
@@ -92,6 +93,7 @@ const SingleArticle = () => {
 					article_id={article_id}
 					comment_count={article.comment_count}
 					setComments={setComments}
+					comments={comments}
 				/>
 			</div>
 		</main>

@@ -14,7 +14,7 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 	};
 
 	return (
-		<div>
+		<div className="sort-buttons">
 			<FormControl sx={{ m: 1, minWidth: 120 }}>
 				<InputLabel id="select-helper-label">Sort by</InputLabel>
 				<Select
