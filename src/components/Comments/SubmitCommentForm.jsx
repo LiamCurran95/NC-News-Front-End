@@ -6,6 +6,7 @@ import { Box, TextField, Button } from "@mui/material";
 const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 	const { user } = useContext(UserContext);
 	const [err, setErr] = useState(null);
+	const [inlineErr, setInlineErr] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [postingComment, setPostingComment] = useState(false);
 
@@ -14,30 +15,35 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 		setPostingComment(true);
 		setErr(null);
 		const commentBody = e.target.elements[0].value;
+		console.log(e.target.elements[0].value);
 		const newComment = {
 			comment: { author: user.username, body: commentBody },
 		};
-
-		api
-			.addCommentToArticle(+article_id, newComment)
-			.then(({ comment }) => {
-				setPostingComment(false);
-				setComments((existing_comments) => {
-					const newComments = [...existing_comments];
-					newComments.push(comment);
-					return newComments;
+		if (newComment.comment.body.length !== 0) {
+			api
+				.addCommentToArticle(+article_id, newComment)
+				.then(({ comment }) => {
+					setPostingComment(false);
+					setComments((existing_comments) => {
+						const newComments = [...existing_comments];
+						newComments.push(comment);
+						return newComments;
+					});
+					setIsLoading(false);
+				})
+				.catch(() => {
+					setPostingComment(false);
+					setInlineErr("Your comment was not posted, please try again");
 				});
-				setIsLoading(false);
-			})
-			.catch(() => {
-				setPostingComment(false);
-				setErr("Your comment was not posted, please try again");
-			});
+		}
+		if (newComment.comment.body.length === 0) {
+			setInlineErr("You cannot post an empty comment");
+		}
 	};
 
 	if (isLoading) return <p>Loading...</p>;
 
-	if (err) return <h1 className="error">{err}</h1>;
+	if (inlineErr) return <h2 className="error">{inlineErr}</h2>;
 
 	return (
 		<Box
