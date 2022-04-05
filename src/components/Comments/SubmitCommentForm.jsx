@@ -24,7 +24,7 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 					setPostingComment(false);
 					setComments((existing_comments) => {
 						const newComments = [...existing_comments];
-						newComments.push(comment);
+						newComments.unshift(comment);
 						return newComments;
 					});
 					setIsLoading(false);

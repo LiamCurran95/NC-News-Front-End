@@ -3,12 +3,7 @@ import * as api from "../../utils/api";
 import CommentList from "./CommentList";
 import { compareCommentDate } from "../../utils/compareCommentDate";
 
-const CommentSection = ({
-	existing_comments,
-	article_id,
-	setComments,
-	comments,
-}) => {
+const CommentSection = ({ existing_comments, article_id, setComments }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [err, setErr] = useState(null);
 

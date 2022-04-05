@@ -1,5 +1,4 @@
 const ErrorPage = ({ error }) => {
-	console.log(error);
 	return (
 		<div>
 			<h1>{error.code}</h1>
