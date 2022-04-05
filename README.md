@@ -2,7 +2,7 @@
 
 ### Hosted App
 
-Please access the hosted version of this app at: https://northcoders-news-lc.netlify.app/
+Please access the hosted version of this app at: https://liamcurran-nc-news.netlify.app/
 
 ### Project Background
 
