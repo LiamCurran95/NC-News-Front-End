@@ -19,12 +19,12 @@ a {
 }
 button {
 	cursor: pointer;
-	border: none;
+	/* border: none;
 	padding: 16px 16px;
 	font-family: inherit;
 	font-size: inherit;
 	border-radius: 4px;
-	margin-top: auto;
+	margin-top: auto; */
 }
 
 /* Grid */
@@ -39,6 +39,7 @@ button {
 
 .sort-articles-buttons {
 	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	grid-gap: 1em;
 	margin: 2rem auto;
 	padding: 0 1rem;
@@ -88,19 +89,21 @@ footer {
 	padding: 2rem 1rem;
 }
 
-/* Filter */
-.filter button {
-	margin: 0 0.5rem;
-	border: 2px solid #ccc;
-	background-color: transparent;
-	margin: 1rem 0;
-	border-radius: 30px;
+/* Topic Filter */
+.navbar {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 1rem;
+	justify-items: center;
+}
+.topic-button {
 	padding: 1rem;
+	margin: 1rem;
 }
 
-.filter button:hover {
-	border: 3px solid #577590;
-	color: #577590;
+.topic_button {
+	padding: 1rem;
+	margin: 1rem;
 }
 
 /* ArticleCard */

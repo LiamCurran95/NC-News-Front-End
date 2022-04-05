@@ -8,19 +8,27 @@ import SubmitCommentForm from "../components/Comments/SubmitCommentForm";
 
 const SingleArticle = () => {
 	const [err, setErr] = useState(null);
+	const [inlineErr, setInlineErr] = useState(null);
 	const { article_id } = useParams();
 	const [isLoading, setIsLoading] = useState(true);
 	const [comments, setComments] = useState([]);
 	const [article, setArticle] = useState({});
 	const [currentVotes, setVotes] = useState(0);
+	const [userVoted, setUserVoted] = useState(false);
 
 	const handleVote = (value) => {
-		setVotes((currentVotes) => currentVotes + value);
-		setErr(null);
-		api.voteOnArticle(article_id, value).catch(() => {
-			if (value) setVotes((votes) => votes - value);
-			setErr("Vote failed, please try again");
-		});
+		if (userVoted === false) {
+			setVotes((currentVotes) => currentVotes + value);
+			setInlineErr(null);
+			api.voteOnArticle(article_id, value).catch(() => {
+				if (value) setVotes((votes) => votes - value);
+				setErr("Vote failed, please try again");
+			});
+			setUserVoted(true);
+		}
+		if (userVoted === true) {
+			setInlineErr("You cannot vote on an article twice.");
+		}
 	};
 
 	useEffect(() => {
@@ -63,14 +71,14 @@ const SingleArticle = () => {
 					Article votes: {article.votes + currentVotes}
 				</p>
 
-				<IconButton onClick={() => handleVote(1)} color="primary">
+				<IconButton onClick={() => handleVote(1)}>
 					<ThumbUpOffAlt fontSize="large" />
 				</IconButton>
-				<IconButton onClick={() => handleVote(-1)} color="primary">
+				<IconButton onClick={() => handleVote(-1)}>
 					<ThumbDownOffAlt fontSize="large" />
 				</IconButton>
 
-				{err ? <p>{err}</p> : null}
+				{inlineErr ? <p>{inlineErr}</p> : null}
 
 				<SubmitCommentForm
 					article_id={article_id}

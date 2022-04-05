@@ -12,8 +12,8 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<nav className="Navbar">
-			<div className="filter">
+		<nav className="navbar">
+			<div>
 				{topic.map(({ slug }) => {
 					return <TopicButton key={slug} topic={slug} />;
 				})}

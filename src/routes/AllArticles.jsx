@@ -51,14 +51,12 @@ const ArticleList = () => {
 
 	return (
 		<main className="article-cards">
-			<div className="sort-articles-buttons">
-				<SortArticles
-					sort={sort}
-					setSort={setSort}
-					order={order}
-					setOrder={setOrder}
-				/>
-			</div>
+			<SortArticles
+				sort={sort}
+				setSort={setSort}
+				order={order}
+				setOrder={setOrder}
+			/>
 			<div className="article-card-map">
 				{articles.map((article, index) => {
 					return (
