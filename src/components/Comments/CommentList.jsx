@@ -64,11 +64,9 @@ const CommentList = ({
 	if (err) return <h1 className="error">{err}</h1>;
 
 	return (
-		<div>
+		<div className="comment-list">
 			<List
 				sx={{
-					width: "100%",
-					maxWidth: 1000,
 					bgcolor: "background.paper",
 				}}
 			>
@@ -92,14 +90,12 @@ const CommentList = ({
 					/>
 				</ListItem>
 				{username === author && (
-					<ListItemButton>
-						<DeleteIcon
-							disabled={deleteComment}
-							onClick={() => {
-								handleDelete(comment_id);
-							}}
-						/>
-					</ListItemButton>
+					<DeleteIcon
+						disabled={deleteComment}
+						onClick={() => {
+							handleDelete(comment_id);
+						}}
+					/>
 				)}
 				<ListItemText secondary={"Votes: " + votes} />
 				<ListItemText secondary={created_at} />

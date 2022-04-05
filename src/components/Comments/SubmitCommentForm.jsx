@@ -13,7 +13,6 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 	const handleComment = (e) => {
 		e.preventDefault();
 		setPostingComment(true);
-		setErr(null);
 		const commentBody = e.target.elements[0].value;
 		console.log(e.target.elements[0].value);
 		const newComment = {
@@ -30,6 +29,7 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 						return newComments;
 					});
 					setIsLoading(false);
+					setErr(false);
 				})
 				.catch(() => {
 					setPostingComment(false);
@@ -43,12 +43,13 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 
 	if (isLoading) return <p>Loading...</p>;
 
+	if (err) return <h1>{err}</h1>;
 	if (inlineErr) return <h2 className="error">{inlineErr}</h2>;
 
 	return (
 		<Box
+			className="comment-box"
 			component="form"
-			sx={{ width: 2000, height: 500 }}
 			noValidate
 			autoComplete="off"
 			onSubmit={handleComment}
@@ -66,12 +67,7 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 					fullWidth={true}
 				/>
 			</div>
-			<Button
-				variant="contained"
-				className="submit-button"
-				type="submit"
-				disabled={postingComment}
-			>
+			<Button variant="contained" type="submit" disabled={postingComment}>
 				Post your comment!
 			</Button>
 		</Box>

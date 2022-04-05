@@ -20,7 +20,7 @@ const CommentSection = ({ existing_comments, article_id, setComments }) => {
 	if (err) return <h1 className="error">{err}</h1>;
 
 	return (
-		<div className="comments-section">
+		<div className="comment-section">
 			{existing_comments.map((comment, index) => (
 				<CommentList
 					key={index}
