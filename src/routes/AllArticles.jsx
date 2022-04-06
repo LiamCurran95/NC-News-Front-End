@@ -57,7 +57,7 @@ const ArticleList = () => {
 				order={order}
 				setOrder={setOrder}
 			/>
-			<div className="article-card-map">
+			<div className="article-card-map" alt="article card list">
 				{articles.map((article, index) => {
 					return (
 						<ArticleCard

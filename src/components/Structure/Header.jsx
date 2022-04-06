@@ -7,11 +7,11 @@ const Header = () => {
 
 	return (
 		<header className="header">
-			<h1 className="logo">
+			<h1 className="logo" alt="logo">
 				<Link to="/">NC News</Link>
 			</h1>
 
-			<div className="userInfo">
+			<div className="userInfo" alt="user information">
 				<ul key="userInfo">
 					<li key="username">
 						<span className="username">{user.username}</span>

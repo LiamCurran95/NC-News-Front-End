@@ -12,9 +12,11 @@ const ArticleCard = ({
 }) => {
 	return (
 		<Link to={`/articles/${article_id}`}>
-			<CardActionArea className="grid">
+			<CardActionArea className="grid" alt="article-card-with-info">
 				<Card variant="outlined" className="article-card-info">
-					<h3 className="title">{title}</h3>
+					<h3 className="title" alt={title}>
+						{title}
+					</h3>
 					<h4 className="author">Author: {author} </h4>
 					<h5 className="comment_count">Comments: {comment_count} </h5>
 					<h5 className="votes">Article votes: {votes}</h5>

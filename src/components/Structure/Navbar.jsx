@@ -12,7 +12,7 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<nav className="navbar">
+		<nav className="navbar" alt="navigation options">
 			{topic.map(({ slug }) => {
 				return <TopicButton key={slug} topic={slug} />;
 			})}

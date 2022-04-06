@@ -52,9 +52,11 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 			noValidate
 			autoComplete="off"
 			onSubmit={handleComment}
+			alt="comment box"
 		>
 			<div>
 				<TextField
+					alt="comment writing section"
 					id="full-width-text-field"
 					label="Write your comment here."
 					multiline
@@ -66,7 +68,12 @@ const SubmitCommentForm = ({ article_id, setComments, addedComment }) => {
 					fullWidth={true}
 				/>
 			</div>
-			<Button variant="contained" type="submit" disabled={postingComment}>
+			<Button
+				variant="contained"
+				type="submit"
+				disabled={postingComment}
+				alt="submit comment button"
+			>
 				Post your comment!
 			</Button>
 		</Box>

@@ -14,7 +14,7 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 	};
 
 	return (
-		<div className="sort-buttons">
+		<div className="sort-buttons" alt="sort options">
 			<FormControl sx={{ m: 1, minWidth: 120 }}>
 				<InputLabel id="select-helper-label">Sort by</InputLabel>
 				<Select
@@ -27,15 +27,27 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 					<MenuItem value="">
 						<em>None</em>
 					</MenuItem>
-					<MenuItem value={"created_at"}>Created at</MenuItem>
-					<MenuItem value={"title"}>Title</MenuItem>
-					<MenuItem value={"comment_count"}>Comment count</MenuItem>
-					<MenuItem value={"votes"}>Votes</MenuItem>
-					<MenuItem value={"author"}>author</MenuItem>
+					<MenuItem value={"created_at"} alt="created at">
+						Created at
+					</MenuItem>
+					<MenuItem value={"title"} alt="title">
+						Title
+					</MenuItem>
+					<MenuItem value={"comment_count"} alt="comment count">
+						Comment count
+					</MenuItem>
+					<MenuItem value={"votes"} alt="votes">
+						Votes
+					</MenuItem>
+					<MenuItem value={"author"} alt="author">
+						author
+					</MenuItem>
 				</Select>
 			</FormControl>
 			<FormControl sx={{ m: 1, minWidth: 120 }}>
-				<InputLabel id="select-helper-label">Sort by</InputLabel>
+				<InputLabel id="select-helper-label" alt="order by options">
+					Sort by
+				</InputLabel>
 				<Select
 					labelId="select-helper-label"
 					id="select-helper"
@@ -43,8 +55,12 @@ const SortArticles = ({ sort, setSort, order, setOrder }) => {
 					label="Order by"
 					onChange={handleOrder}
 				>
-					<MenuItem value={"asc"}>Ascending</MenuItem>
-					<MenuItem value={"desc"}>Descending</MenuItem>
+					<MenuItem value={"asc"} alt="ascending">
+						Ascending
+					</MenuItem>
+					<MenuItem value={"desc"} alt="descending">
+						Descending
+					</MenuItem>
 				</Select>
 			</FormControl>
 		</div>

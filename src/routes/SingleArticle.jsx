@@ -72,10 +72,10 @@ const SingleArticle = () => {
 					Article votes: {article.votes + currentVotes}
 				</p>
 
-				<IconButton onClick={() => handleVote(1)}>
+				<IconButton alt="upvote button" onClick={() => handleVote(1)}>
 					<ThumbUpOffAlt fontSize="large" />
 				</IconButton>
-				<IconButton onClick={() => handleVote(-1)}>
+				<IconButton alt="downvote button" onClick={() => handleVote(-1)}>
 					<ThumbDownOffAlt fontSize="large" />
 				</IconButton>
 
